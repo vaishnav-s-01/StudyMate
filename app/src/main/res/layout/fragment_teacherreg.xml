@@ -12,7 +12,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="410dp"
-            android:layout_height="661dp"
+            android:layout_height="725dp"
             android:background="@drawable/login_bk"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,11 +52,12 @@
                         android:id="@+id/RTmail"
                         android:layout_width="326dp"
                         android:layout_height="62dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="4dp"
                         android:hint="Email ID"
                         app:layout_constraintBottom_toTopOf="@+id/RTid"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/RTname" />
+                        app:layout_constraintTop_toBottomOf="@+id/RTname"
+                        app:layout_constraintVertical_bias="1.0" />
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/RTpass"
@@ -72,7 +73,7 @@
                         android:id="@+id/RTid"
                         android:layout_width="313dp"
                         android:layout_height="52dp"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_marginBottom="8dp"
                         android:hint="Teacher ID"
                         app:layout_constraintBottom_toTopOf="@+id/RTpass"
@@ -87,11 +88,11 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:src="@android:drawable/ic_menu_send"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/cardView"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardView"
                 app:layout_constraintVertical_bias="0.454" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

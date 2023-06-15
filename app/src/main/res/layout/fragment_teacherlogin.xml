@@ -11,8 +11,8 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="411dp"
-            android:layout_height="661dp"
+            android:layout_width="match_parent"
+            android:layout_height="725dp"
             android:background="@drawable/login_bk"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
                 android:layout_width="671dp"
                 android:layout_height="236dp"
                 android:layout_marginTop="-60dp"
-                android:layout_marginEnd="82dp"
+                android:layout_marginEnd="70dp"
                 app:cardBackgroundColor="#CD9AB6ED"
                 app:cardCornerRadius="200dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -75,13 +75,15 @@
                 android:id="@+id/Tlogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="16dp"
                 android:clickable="true"
                 android:src="@android:drawable/ic_menu_send"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.459" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="@+id/cardView"
+                app:layout_constraintVertical_bias="0.466" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -21,8 +21,8 @@ public class Studentmain extends AppCompatActivity {
 
          tabLayout = findViewById(R.id.tablayout);
          viewPager2 = findViewById(R.id.viewPager);
-            tabLayout.addTab(tabLayout.newTab().setText("Student Login"));
             tabLayout.addTab(tabLayout.newTab().setText("Student Signup"));
+            tabLayout.addTab(tabLayout.newTab().setText("Student Login"));
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             adapter = new ViewPagerAdapter1(fragmentManager, getLifecycle());
