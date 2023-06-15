@@ -1,64 +1,70 @@
 package com.example.studymate;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Teacherlogin#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class Teacherlogin extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private EditText nameEditText;
+    private EditText passwordEditText,id;
+    private FloatingActionButton loginButton;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Teacherlogin() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Teacherlogin.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Teacherlogin newInstance(String param1, String param2) {
-        Teacherlogin fragment = new Teacherlogin();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private DBHelper dbHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        dbHelper = new DBHelper(getContext());
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_teacherlogin, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_teacherlogin, container, false);
+
+        nameEditText = view.findViewById(R.id.Tname);
+        passwordEditText = view.findViewById(R.id.Tpass);
+        loginButton = view.findViewById(R.id.Tlogin);
+        id = view.findViewById(R.id.Tid);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = nameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                String Tid = id.getText().toString();
+
+                Log.d(TAG, "onClick: hi"+name);
+                Log.d(TAG, "onClick: hi"+password);
+                Log.d(TAG, "onClick: hi"+Tid);
+                boolean loginSuccessful = dbHelper.checkTeacherLoginCredentials(Tid, password,name);
+
+                if (loginSuccessful) {
+                    // Teacher login successful, navigate to teacher's dashboard or desired screen
+                    Toast.makeText(getContext(), "Teacher login successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), TeacherDashboard.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                    // Perform necessary actions for teacher login
+                } else {
+                    // Teacher login failed, show error message or take appropriate action
+                    Toast.makeText(getContext(), "Invalid login credentials", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        return view;
     }
 }

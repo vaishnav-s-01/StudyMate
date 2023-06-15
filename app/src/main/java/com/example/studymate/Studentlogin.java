@@ -49,6 +49,7 @@ public class Studentlogin extends Fragment {
                     // For example, you can use Intent to start a new activity
                     Intent intent = new Intent(getActivity(), StudentDashboard.class);
                     startActivity(intent);
+                    getActivity().finish();
                 } else {
                     Toast.makeText(getActivity(), "Invalid credentials", Toast.LENGTH_SHORT).show();
                 }

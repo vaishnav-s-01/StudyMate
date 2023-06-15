@@ -1,11 +1,15 @@
 package com.example.studymate;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -16,12 +20,14 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, "SignLog.db", null, 1);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase MyDatabase) {
-        MyDatabase.execSQL("create Table users(email TEXT primary key, password TEXT, fullname TEXT)");
-        MyDatabase.execSQL("create Table teacher(teacherid TEXT primary key, Tpassword TEXT, Tfullname TEXT,Temail TEXT,status  INTEGER DEFAULT 0)");
-        MyDatabase.execSQL("create Table admin(adminID TEXT primary key, password TEXT)");
+        MyDatabase.execSQL("CREATE TABLE users (email TEXT PRIMARY KEY, password TEXT, fullname TEXT)");
+        MyDatabase.execSQL("CREATE TABLE teacher (teacherid TEXT PRIMARY KEY, Tpassword TEXT, Tfullname TEXT, Temail TEXT, status INTEGER DEFAULT 0)");
+        MyDatabase.execSQL("CREATE TABLE admin (adminID TEXT PRIMARY KEY, password TEXT)");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
@@ -74,13 +80,73 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean checkTeacherLoginCredentials(String name, String password) {
+    public boolean checkTeacherLoginCredentials(String id, String password, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE Tfullname = ? AND Tpassword = ?", new String[]{name, password});
+        Cursor cursor = db.rawQuery("SELECT * FROM teacher WHERE teacherid = ? AND Tpassword = ? AND Tfullname = ?  ", new String[]{id, password, name});
 
         if (cursor.getCount() > 0) {
+            cursor.close();
             return true;
         } else {
+            cursor.close();
             return false;
         }
-}}
+    }
+
+
+
+
+    public boolean insertAdminData(String adminId, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Check if admin data already exists
+        Cursor cursor = db.rawQuery("SELECT * FROM admin WHERE adminID = ?", new String[]{adminId});
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return false; // Admin data already exists, return false
+        }
+        cursor.close();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("adminID", adminId);
+        contentValues.put("password", password);
+        long result = db.insert("admin", null, contentValues);
+        return result != -1;
+    }
+
+
+
+
+
+    public boolean checkAdminLoginCredentials(String adminId, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM admin WHERE adminID = ? AND password = ?", new String[]{adminId, password});
+
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            return false;
+        }
+    }
+
+
+
+
+
+    public boolean deleteteacher(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete("teacher", "teacherID=?", new String[]{id});
+        return result > 0;
+    }
+
+    public boolean addteacher(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("status", 1); // Change the status to 1
+        int result = db.update("teacher", values, "teacherID=?", new String[]{id});
+        return result > 0;
+    }
+
+}

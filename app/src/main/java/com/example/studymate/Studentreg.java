@@ -50,8 +50,10 @@ public class Studentreg extends Fragment {
 
                         if (insert) {
                             Toast.makeText(getActivity(), "Signup Successful!", Toast.LENGTH_SHORT).show();
-                            //Intent intent = new Intent(getActivity(), Studentlogin.class);
-                            //startActivity(intent);
+                            Intent intent = new Intent(getActivity(), Studentlogin.class);
+                            startActivity(intent);
+                            getActivity().finish();
+
 
 
                         } else {
