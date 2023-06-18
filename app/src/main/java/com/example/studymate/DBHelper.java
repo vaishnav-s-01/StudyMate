@@ -154,4 +154,23 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from teacher",null);
         return cursor;
     }
+
+    @SuppressLint("Range")
+    public int checkTeacherStatus(String teacherId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int status = -1;
+
+        // Query to fetch the status of the teacher with the given teacherId
+        String query = "SELECT status FROM teacher WHERE teacherid = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{teacherId});
+
+        if (cursor.moveToFirst()) {
+            status = cursor.getInt(cursor.getColumnIndex("status"));
+        }
+
+        cursor.close();
+        db.close();
+
+        return status;
+    }
 }

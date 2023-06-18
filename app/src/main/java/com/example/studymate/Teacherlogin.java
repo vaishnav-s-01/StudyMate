@@ -60,10 +60,15 @@ public class Teacherlogin extends Fragment {
                     // Perform necessary actions for teacher login
                 } else {
                     // Teacher login failed, show error message or take appropriate action
-                    Toast.makeText(getContext(), "Invalid login credentials", Toast.LENGTH_SHORT).show();
+                    if (dbHelper.checkTeacherStatus(Tid) == 0) {
+                        Toast.makeText(getContext(), "Admin not verified", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Invalid login credentials", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
+
 
         return view;
     }
