@@ -80,9 +80,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean checkTeacherLoginCredentials(String id, String password, String name) {
+    public boolean checkTeacherLoginCredentials(String id, String password, String name,String status) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM teacher WHERE teacherid = ? AND Tpassword = ? AND Tfullname = ?  ", new String[]{id, password, name});
+        Cursor cursor = db.rawQuery("SELECT * FROM teacher WHERE teacherid = ? AND Tpassword = ? AND Tfullname = ? AND status = ?", new String[]{id, password, name,status});
 
         if (cursor.getCount() > 0) {
             cursor.close();
@@ -149,4 +149,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
+    public Cursor getdata() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from teacher",null);
+        return cursor;
+    }
 }

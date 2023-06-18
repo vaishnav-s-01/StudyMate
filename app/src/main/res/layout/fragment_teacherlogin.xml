@@ -55,6 +55,7 @@
                         android:layout_marginEnd="4dp"
                         android:layout_marginBottom="16dp"
                         android:hint="Password"
+                        android:inputType="textPassword"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -64,6 +65,7 @@
                         android:layout_height="63dp"
                         android:layout_marginEnd="4dp"
                         android:hint="Teacher ID"
+                        android:inputType="numberPassword"
                         app:layout_constraintBottom_toTopOf="@+id/Tpass"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

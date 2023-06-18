@@ -47,6 +47,7 @@
                         android:layout_height="62dp"
                         android:layout_marginTop="36dp"
                         android:layout_marginEnd="8dp"
+                        android:inputType="textPassword"
                         android:hint="Admin ID"
                         app:layout_constraintBottom_toTopOf="@+id/Apass"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +60,7 @@
                         android:layout_height="65dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="48dp"
+                        android:inputType="textPassword"
                         android:hint="Admin Password"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />

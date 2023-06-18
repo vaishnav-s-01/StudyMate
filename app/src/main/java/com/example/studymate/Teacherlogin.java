@@ -49,7 +49,7 @@ public class Teacherlogin extends Fragment {
                 Log.d(TAG, "onClick: hi"+name);
                 Log.d(TAG, "onClick: hi"+password);
                 Log.d(TAG, "onClick: hi"+Tid);
-                boolean loginSuccessful = dbHelper.checkTeacherLoginCredentials(Tid, password,name);
+                boolean loginSuccessful = dbHelper.checkTeacherLoginCredentials(Tid, password,name,"1");
 
                 if (loginSuccessful) {
                     // Teacher login successful, navigate to teacher's dashboard or desired screen
