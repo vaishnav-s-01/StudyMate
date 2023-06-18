@@ -6,88 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".Studentreg">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="725dp"
-            android:background="@drawable/login_bk"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="635dp"
-                android:layout_height="223dp"
-                android:layout_marginStart="-350dp"
-                android:layout_marginTop="-50dp"
-                android:layout_marginEnd="15dp"
-                app:cardBackgroundColor="#CD9AB6ED"
-                app:cardCornerRadius="200dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="410dp"
+                android:layout_height="816dp"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/login_bk"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.498">
+                app:layout_constraintVertical_bias="1.0">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="635dp"
+                    android:layout_height="223dp"
+                    android:layout_marginStart="-350dp"
+                    android:layout_marginTop="-50dp"
+                    android:layout_marginEnd="15dp"
+                    app:cardBackgroundColor="#CD9AB6ED"
+                    app:cardCornerRadius="200dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.498">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/RSname"
-                        android:layout_width="320dp"
-                        android:layout_height="64dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:hint="Full Name"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/RSmail"
-                        android:layout_width="326dp"
-                        android:layout_height="62dp"
-                        android:layout_marginEnd="8dp"
-                        android:hint="Email ID"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/RSname" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/RSname"
+                            android:layout_width="320dp"
+                            android:layout_height="64dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:hint="Full Name"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/RSpass"
-                        android:layout_width="318dp"
-                        android:layout_height="65dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="28dp"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/RSmail"
-                        app:layout_constraintVertical_bias="0.0" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/RSmail"
+                            android:layout_width="326dp"
+                            android:layout_height="62dp"
+                            android:layout_marginEnd="8dp"
+                            android:hint="Email ID"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/RSname" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/RS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_send"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.636"
-                app:layout_constraintStart_toEndOf="@+id/cardView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.454" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/RSpass"
+                            android:layout_width="318dp"
+                            android:layout_height="65dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="28dp"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/RSmail"
+                            app:layout_constraintVertical_bias="0.0" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/RS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@android:drawable/ic_menu_send"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="@+id/cardView"
+                    app:layout_constraintVertical_bias="0.466" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </ScrollView>
 
 </FrameLayout>
