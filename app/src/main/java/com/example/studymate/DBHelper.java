@@ -94,8 +94,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
-
     public boolean insertAdminData(String adminId, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
